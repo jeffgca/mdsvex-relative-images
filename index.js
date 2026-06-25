@@ -8,7 +8,12 @@ const RE_SCRIPT_START =
 const RE_PROPS = /(\w+)\s*=\s*(["'])(\s*(\$\w+|\.{1,2})[\/\\].*?\.\w+\s*(\?([^=&]+=[^=&]+)(&[^=&]+=[^=&]+)*)?)\2/g;
 const RE_PATH = /\s*(\$\w+|\.{1,2})[\/\\].*?\.\w+\s*(\?([^=&]+=[^=&]+)(&[^=&]+=[^=&]+)*)?/;
 
-export default function relativeImages(options = {basePath: '/'}) {
+/**
+ * @param {object} options
+ * @param {string} options.basePath - The base path to prepend to relative URLs. DO NOT INCLUDE '/' chars!
+ * @returns {function} A transformer function for processing the AST.
+ */
+export default function relativeImages(options = {basePath: ''}) {
     return function transformer(tree) {
         const urls = new Map();
         const url_count = new Map();
@@ -43,7 +48,7 @@ export default function relativeImages(options = {basePath: '/'}) {
             // if the url starts with a slash, prepend the basePath
             if (url.startsWith('/')) {
                 // basePath is in the format '/basePath/' so we need to slice the leading slash from the url
-                url = `${options.basePath}${url.slice(1)}`;
+                url = `/${options.basePath}/${url.slice(1)}`;
             }
 
             return url;

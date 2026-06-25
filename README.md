@@ -51,7 +51,7 @@ If your site is hosted in a sub-folder ( for example in github pages ), you can 
 // svelte.config.js
 import relativeImages from "mdsvex-relative-images";
 
-const basePath = process.env.PAGES_BASE || '/'
+const basePath = process.env.PAGES_BASE || ''
 
 const config = {
   // ...

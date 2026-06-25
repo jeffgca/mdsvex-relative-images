@@ -31,6 +31,7 @@ export default config;
 ```
 
 ### Option 2: Add to mdsvex.config.js
+
 If you're using it as a standalone, then you can pass it to mdsvex like this:
 
 ```js
@@ -43,6 +44,7 @@ mdsvex({
 ```
 
 ### Advanced Configuration
+
 If your site is hosted in a sub-folder ( for example in github pages ), you can supply a basePath option to prepend paths:
 
 ```js

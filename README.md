@@ -42,6 +42,27 @@ mdsvex({
 });
 ```
 
+### Advanced Configuration
+If your site is hosted in a sub-folder ( for example in github pages ), you can supply a basePath option to prepend paths:
+
+```js
+// svelte.config.js
+import relativeImages from "mdsvex-relative-images";
+
+const basePath = process.env.PAGES_BASE || '/'
+
+const config = {
+  // ...
+  preprocess: [ // ...
+    mdsvex({ remarkPlugins: [[relativeImages, {basePath}]] })
+  ],
+  // ...
+  extensions: [".svelte", ".svx"],
+};
+
+export default config;
+```
+
 ## 🚀 Usage
 
 ### Markdown Syntax
